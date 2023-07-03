@@ -1,0 +1,22 @@
+<p>
+dsfs works!
+</p>
+
+<select
+class="form-select"
+id="inputGroupSelect04 teamSelect"
+aria-label="Example select with button addon"
+name="team"
+[formControl]="teamControl"
+>
+
+<option 
+ *ngFor="let t of teams$ | async"  
+[value]="t.team?.id">{{ t.team?.name }} f</option>
+</select>
+
+<div  *ngFor="let t of lastfive$ | async">
+  <span> {{t.teams.home.name}}</span> <span>vrs</span> <span></span>{{t.teams.away.name}}
+
+</div>
+
