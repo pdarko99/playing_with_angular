@@ -14,8 +14,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     console.log('hellog prindafdpoafdj');
     const headers = new HttpHeaders().append(
-      'x-rapidapi-key',
-      'b56899596cd44ac9681e6766f395573e'
+      'x-rapidapi-key', '1828b9db08a99c9075e1fe2aed7d5bc1'
     );
     // .append('X-RapidAPI-Host', 'api-football-beta.p.rapidapi.com');
     const cloneReq = req.clone({ headers });

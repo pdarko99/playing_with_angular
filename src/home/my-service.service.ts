@@ -11,7 +11,7 @@ export class MyServiceService {
   getTeams(): Observable<any> {
     console.log("am being fired 1")
     const headers = new HttpHeaders()
-      .set('x-rapidapi-key', '1828b9db08a99c9075e1fe2aed7d5bc1')
+      // .set('x-rapidapi-key', '1828b9db08a99c9075e1fe2aed7d5bc1')
     return this.http.get<any>(this.url, { headers }).pipe(catchError(this.handleError));
   }
 

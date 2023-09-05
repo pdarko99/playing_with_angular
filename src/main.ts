@@ -3,8 +3,15 @@ import { Component, importProvidersFrom } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter, RouterOutlet, Routes } from '@angular/router';
-import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
-import { HttpInterceptorModule, HttpRequestInterceptor } from './home/http.interceptor';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
+import {
+  HttpInterceptorModule,
+  HttpRequestInterceptor,
+} from './home/http.interceptor';
 
 @Component({
   selector: 'my-app',
@@ -33,13 +40,13 @@ const appRoutes: Routes = [
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(appRoutes),
-    provideHttpClient(), 
-    {
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpRequestInterceptor,
-    multi: true,
-  }
+    provideHttpClient(),
 
-]
-    
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestInterceptor,
+      multi: true,
+    },
+    provideHttpClient(withInterceptorsFromDi()),
+  ],
 });
